@@ -18,6 +18,29 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
+// MÚSICA DE FONDO
+// ============================================
+
+function startBackgroundMusic() {
+    const backgroundMusic = document.getElementById('background-music');
+    if (backgroundMusic) {
+        // Configurar volumen suave (0.3 = 30% del volumen)
+        backgroundMusic.volume = 0.3;
+        
+        // Reproducir música
+        backgroundMusic.play().catch(error => {
+            // Algunos navegadores requieren interacción del usuario primero
+            console.log('La reproducción automática fue bloqueada:', error);
+            // Intentar reproducir cuando el usuario interactúe
+            document.addEventListener('click', function playMusicOnce() {
+                backgroundMusic.play().catch(() => {});
+                document.removeEventListener('click', playMusicOnce);
+            }, { once: true });
+        });
+    }
+}
+
+// ============================================
 // ANIMACIÓN DEL REGALO
 // ============================================
 
@@ -36,6 +59,9 @@ function initializeGift() {
         
         e.preventDefault();
         giftOpened = true;
+        
+        // Iniciar música de fondo
+        startBackgroundMusic();
         
         // Agregar clase para animar la tapa
         giftLid.classList.add('opened');
