@@ -6,6 +6,7 @@
 let giftOpened = false;
 let heartsInterval;
 let snowflakesInterval;
+let musicStarted = false;
 
 // ============================================
 // INICIALIZACIÓN
@@ -22,22 +23,53 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 
 function startBackgroundMusic() {
+    if (musicStarted) return; // Evitar iniciar múltiples veces
+    
     const backgroundMusic = document.getElementById('background-music');
-    if (backgroundMusic) {
-        // Configurar volumen suave (0.3 = 30% del volumen)
-        backgroundMusic.volume = 0.3;
-        
-        // Reproducir música
-        backgroundMusic.play().catch(error => {
-            // Algunos navegadores requieren interacción del usuario primero
-            console.log('La reproducción automática fue bloqueada:', error);
-            // Intentar reproducir cuando el usuario interactúe
-            document.addEventListener('click', function playMusicOnce() {
-                backgroundMusic.play().catch(() => {});
-                document.removeEventListener('click', playMusicOnce);
-            }, { once: true });
-        });
+    if (!backgroundMusic) {
+        console.log('Elemento de audio no encontrado');
+        return;
     }
+    
+    // Configurar volumen suave (0.3 = 30% del volumen)
+    backgroundMusic.volume = 0.3;
+    
+    // Función para intentar reproducir
+    const tryPlay = () => {
+        const playPromise = backgroundMusic.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                musicStarted = true;
+                console.log('Música de fondo iniciada correctamente');
+            }).catch(error => {
+                console.log('Error al reproducir música:', error);
+                // Si el audio no está listo, esperar a que se cargue
+                if (backgroundMusic.readyState < 2) {
+                    backgroundMusic.addEventListener('canplay', function playWhenReady() {
+                        backgroundMusic.play().then(() => {
+                            musicStarted = true;
+                            console.log('Música iniciada después de cargar');
+                        }).catch(err => {
+                            console.log('No se pudo reproducir después de cargar:', err);
+                        });
+                        backgroundMusic.removeEventListener('canplay', playWhenReady);
+                    }, { once: true });
+                }
+            });
+        } else {
+            // Fallback para navegadores antiguos
+            try {
+                backgroundMusic.play();
+                musicStarted = true;
+            } catch (e) {
+                console.log('Error en fallback de reproducción:', e);
+            }
+        }
+    };
+    
+    // Intentar reproducir inmediatamente
+    tryPlay();
 }
 
 // ============================================
@@ -60,12 +92,14 @@ function initializeGift() {
         e.preventDefault();
         giftOpened = true;
         
-        // Iniciar música de fondo
-        startBackgroundMusic();
-        
         // Agregar clase para animar la tapa
         giftLid.classList.add('opened');
         giftBox.classList.add('opened');
+        
+        // Iniciar música de fondo inmediatamente después de la interacción del usuario
+        setTimeout(() => {
+            startBackgroundMusic();
+        }, 100);
         
         // Crear partículas de brillo
         createSparkles(giftBox);
