@@ -25,10 +25,14 @@
     --priority-medium: #FFB74D;
     --priority-low: #81C784;
     
-    /* Modo noche */
-    --night-bg: #1a1a1a;
-    --night-text: #e0e0e0;
-    --night-card: #2d2d2d;
+    /* Modo noche - Colores mejorados */
+    --night-bg: #0f0f0f;
+    --night-text: #e8e8e8;
+    --night-card: #1a1a1a;
+    --night-card-hover: #252525;
+    --night-border: #333333;
+    --night-accent: #8B0000;
+    --night-shadow: rgba(0, 0, 0, 0.5);
     
     /* Tipografías */
     --font-serif: 'Playfair Display', serif;
@@ -521,7 +525,7 @@ audio {
     flex: 1;
 }
 
-/* Modo Noche */
+/* Modo Noche - Mejorado */
 body.night-mode {
     background: var(--night-bg);
     color: var(--night-text);
@@ -535,6 +539,12 @@ body.night-mode .content-section {
     background: var(--night-bg);
 }
 
+body.night-mode .dashboard-header h1,
+body.night-mode .section-header h2,
+body.night-mode .section-title {
+    color: var(--night-text);
+}
+
 body.night-mode .summary-card,
 body.night-mode .task-item,
 body.night-mode .note-card,
@@ -542,21 +552,40 @@ body.night-mode .habit-card,
 body.night-mode .calendar-container,
 body.night-mode .calendar-events {
     background: var(--night-card);
-    border-color: #444;
+    border-color: var(--night-border);
     color: var(--night-text);
+    box-shadow: 0 2px 8px var(--night-shadow);
+}
+
+body.night-mode .task-item:hover,
+body.night-mode .note-card:hover,
+body.night-mode .habit-card:hover {
+    background: var(--night-card-hover);
+    border-color: var(--night-accent);
+}
+
+body.night-mode .summary-card {
+    background: linear-gradient(135deg, var(--night-card) 0%, var(--night-card-hover) 100%);
 }
 
 body.night-mode .bottom-nav {
     background: var(--night-card);
-    border-top-color: #444;
+    border-top-color: var(--night-border);
+    box-shadow: 0 -2px 10px var(--night-shadow);
 }
 
 body.night-mode .nav-btn {
     color: var(--night-text);
+    opacity: 0.7;
+}
+
+body.night-mode .nav-btn:hover {
+    opacity: 1;
 }
 
 body.night-mode .nav-btn.active {
     color: var(--color-red-light);
+    opacity: 1;
 }
 
 body.night-mode .filter-select,
@@ -565,39 +594,122 @@ body.night-mode input,
 body.night-mode textarea,
 body.night-mode select {
     background: var(--night-card);
-    border-color: #444;
+    border-color: var(--night-border);
     color: var(--night-text);
+}
+
+body.night-mode .filter-select:focus,
+body.night-mode .search-input:focus,
+body.night-mode input:focus,
+body.night-mode textarea:focus,
+body.night-mode select:focus {
+    border-color: var(--night-accent);
+    box-shadow: 0 0 0 2px rgba(139, 0, 0, 0.2);
 }
 
 body.night-mode .modal-content {
     background: var(--night-card);
     color: var(--night-text);
+    border-color: var(--night-border);
 }
 
-/* Toggle modo noche */
+body.night-mode .add-btn {
+    background: var(--night-accent);
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.4);
+}
+
+body.night-mode .add-btn:hover {
+    background: var(--color-red-light);
+    transform: scale(1.05);
+}
+
+body.night-mode .motivational-message {
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0.05) 100%);
+    border-color: var(--night-border);
+    color: var(--night-text);
+}
+
+body.night-mode .date-time {
+    color: rgba(232, 232, 232, 0.7);
+}
+
+body.night-mode .summary-label,
+body.night-mode .task-category,
+body.night-mode .task-deadline,
+body.night-mode .note-date {
+    color: rgba(232, 232, 232, 0.6);
+}
+
+body.night-mode .task-item.completed {
+    opacity: 0.5;
+}
+
+body.night-mode .calendar-day.today {
+    background: var(--night-accent);
+    color: white;
+}
+
+body.night-mode .calendar-day.has-events::after {
+    background: var(--color-red-light);
+}
+
+body.night-mode .view-today-btn,
+body.night-mode .view-all-btn {
+    background: var(--night-card);
+    border-color: var(--night-border);
+    color: var(--night-text);
+}
+
+body.night-mode .view-today-btn.active,
+body.night-mode .view-all-btn.active {
+    background: var(--night-accent);
+    border-color: var(--night-accent);
+    color: white;
+}
+
+body.night-mode .achievement-card {
+    background: linear-gradient(135deg, rgba(255, 224, 130, 0.2) 0%, rgba(255, 213, 79, 0.15) 100%);
+    border: 1px solid rgba(255, 224, 130, 0.3);
+}
+
+/* Toggle modo noche - Mejorado */
 .night-mode-toggle {
     position: fixed;
-    top: 20px;
+    bottom: 100px;
     right: 20px;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    background: var(--color-gray);
-    border: none;
-    font-size: 1.5rem;
+    background: var(--color-red-light);
+    border: 2px solid white;
+    font-size: 1.3rem;
     cursor: pointer;
-    z-index: 1001;
-    box-shadow: var(--shadow-md);
-    transition: transform 0.2s ease;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.night-mode-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(139, 0, 0, 0.4);
 }
 
 .night-mode-toggle:active {
-    transform: scale(0.9);
+    transform: scale(0.95);
 }
 
 body.night-mode .night-mode-toggle {
-    background: var(--night-card);
-    color: var(--night-text);
+    background: var(--night-accent);
+    border-color: var(--night-text);
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.5);
+}
+
+body.night-mode .night-mode-toggle:hover {
+    background: var(--color-red-light);
+    box-shadow: 0 6px 16px rgba(139, 0, 0, 0.6);
 }
 
 /* ============================================
