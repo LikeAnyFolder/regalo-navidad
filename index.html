@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Espacio - Organización Química Farmacéutica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navegación inferior -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-section="dashboard">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Inicio</span>
+        </button>
+        <button class="nav-btn" data-section="tasks">
+            <span class="nav-icon">📝</span>
+            <span class="nav-label">Tareas</span>
+        </button>
+        <button class="nav-btn" data-section="calendar">
+            <span class="nav-icon">📅</span>
+            <span class="nav-label">Calendario</span>
+        </button>
+        <button class="nav-btn" data-section="notes">
+            <span class="nav-icon">📚</span>
+            <span class="nav-label">Notas</span>
+        </button>
+        <button class="nav-btn" data-section="habits">
+            <span class="nav-icon">✅</span>
+            <span class="nav-label">Hábitos</span>
+        </button>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- SECCIÓN 1: DASHBOARD -->
+        <section id="dashboard" class="content-section active">
+            <div class="dashboard-header">
+                <h1 class="greeting" id="greeting">Buenos días</h1>
+                <p class="date-time" id="date-time"></p>
+            </div>
+
+            <div class="dashboard-summary">
+                <div class="summary-card">
+                    <div class="summary-icon">📝</div>
+                    <div class="summary-info">
+                        <span class="summary-number" id="tasks-count">0</span>
+                        <span class="summary-label">Tareas</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">⏰</div>
+                    <div class="summary-info">
+                        <span class="summary-number" id="urgent-count">0</span>
+                        <span class="summary-label">Urgentes</span>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">📅</div>
+                    <div class="summary-info">
+                        <span class="summary-number" id="events-count">0</span>
+                        <span class="summary-label">Eventos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="motivational-message" id="motivational-message">
+                ¡Tú puedes lograr todo lo que te propongas! 💪
+            </div>
+
+            <!-- Logros del día en dashboard -->
+            <div class="daily-achievements" id="dashboard-achievements" style="display: none;">
+                <div class="achievement-card">
+                    <span class="achievement-icon">🎉</span>
+                    <span class="achievement-text" id="dashboard-achievement-text"></span>
+                </div>
+            </div>
+
+            <!-- Botón Modo Focus -->
+            <button class="focus-mode-btn" id="focus-mode-trigger">
+                <span>🎯</span>
+                <span>Modo Concentración</span>
+            </button>
+
+            <!-- Sección Navideña Oculta -->
+            <div class="christmas-card">
+                <div class="christmas-tree">🎄</div>
+                <p class="christmas-hint">Hay algo aquí para ti 🎁</p>
+                <a href="regalo.html" class="christmas-link"></a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: TAREAS -->
+        <section id="tasks" class="content-section">
+            <div class="section-header">
+                <h2>Tareas</h2>
+                <button class="add-btn" id="add-task-btn">+</button>
+            </div>
+
+            <!-- Vista rápida: Hoy -->
+            <div class="quick-view-today">
+                <button class="view-today-btn active" id="view-today-btn">
+                    📅 Hoy
+                </button>
+                <button class="view-all-btn" id="view-all-btn">
+                    📋 Todas
+                </button>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filters">
+                <select id="filter-priority" class="filter-select">
+                    <option value="all">Todas las prioridades</option>
+                    <option value="high">Alta</option>
+                    <option value="medium">Media</option>
+                    <option value="low">Baja</option>
+                </select>
+                <select id="filter-category" class="filter-select">
+                    <option value="all">Todas las categorías</option>
+                    <option value="Química Orgánica">Química Orgánica</option>
+                    <option value="Farmacología">Farmacología</option>
+                    <option value="Análisis Farmacéutico">Análisis Farmacéutico</option>
+                    <option value="Química Farmacéutica">Química Farmacéutica</option>
+                    <option value="Bioquímica">Bioquímica</option>
+                    <option value="Farmacia Clínica">Farmacia Clínica</option>
+                    <option value="Laboratorio">Laboratorio</option>
+                    <option value="Prácticas">Prácticas</option>
+                    <option value="Otros">Otros</option>
+                </select>
+                <select id="filter-status" class="filter-select">
+                    <option value="all">Todos los estados</option>
+                    <option value="pending">Pendiente</option>
+                    <option value="in-progress">En progreso</option>
+                    <option value="completed">Completada</option>
+                </select>
+            </div>
+
+            <!-- Logros del día -->
+            <div class="daily-achievements" id="daily-achievements" style="display: none;">
+                <div class="achievement-card">
+                    <span class="achievement-icon">🎉</span>
+                    <span class="achievement-text" id="achievement-text"></span>
+                </div>
+            </div>
+
+            <!-- Lista de tareas -->
+            <div class="tasks-list" id="tasks-list">
+                <!-- Las tareas se agregan dinámicamente -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: CALENDARIO -->
+        <section id="calendar" class="content-section">
+            <div class="section-header">
+                <h2>Calendario Académico</h2>
+                <button class="nav-month-btn" id="prev-month">‹</button>
+                <span id="current-month-year"></span>
+                <button class="nav-month-btn" id="next-month">›</button>
+            </div>
+
+            <div class="calendar-container">
+                <div class="calendar-weekdays">
+                    <div>Dom</div>
+                    <div>Lun</div>
+                    <div>Mar</div>
+                    <div>Mié</div>
+                    <div>Jue</div>
+                    <div>Vie</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="calendar-days" id="calendar-days">
+                    <!-- Los días se generan dinámicamente -->
+                </div>
+            </div>
+
+            <div class="calendar-events" id="calendar-events">
+                <h3>Eventos del día</h3>
+                <div id="day-events-list"></div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: NOTAS -->
+        <section id="notes" class="content-section">
+            <div class="section-header">
+                <h2>Apuntes y Notas</h2>
+                <button class="add-btn" id="add-note-btn">+</button>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="notes-search" placeholder="🔍 Buscar notas..." class="search-input">
+            </div>
+
+            <div class="notes-grid" id="notes-grid">
+                <!-- Las notas se agregan dinámicamente -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: HÁBITOS -->
+        <section id="habits" class="content-section">
+            <div class="section-header">
+                <h2>Hábitos y Bienestar</h2>
+            </div>
+
+            <div class="habits-container" id="habits-container">
+                <!-- Los hábitos se agregan dinámicamente -->
+            </div>
+
+            <button class="add-habit-btn" id="add-habit-btn">+ Agregar Hábito</button>
+
+            <div class="weekly-goals">
+                <h3>Metas Semanales</h3>
+                <textarea id="weekly-goals-text" class="goals-textarea" placeholder="Escribe tus metas para esta semana..."></textarea>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal para agregar/editar tarea -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-task-title">Nueva Tarea</h3>
+                <button class="close-modal" id="close-task-modal">×</button>
+            </div>
+            <form id="task-form">
+                <input type="text" id="task-title-input" placeholder="Título de la tarea" required>
+                <textarea id="task-description-input" placeholder="Descripción (opcional)"></textarea>
+                <input type="date" id="task-deadline-input">
+                <select id="task-priority-input">
+                    <option value="low">Prioridad: Baja</option>
+                    <option value="medium" selected>Prioridad: Media</option>
+                    <option value="high">Prioridad: Alta</option>
+                </select>
+                <select id="task-category-input">
+                    <option value="Química Orgánica">Química Orgánica</option>
+                    <option value="Farmacología">Farmacología</option>
+                    <option value="Análisis Farmacéutico">Análisis Farmacéutico</option>
+                    <option value="Química Farmacéutica">Química Farmacéutica</option>
+                    <option value="Bioquímica">Bioquímica</option>
+                    <option value="Farmacia Clínica">Farmacia Clínica</option>
+                    <option value="Laboratorio">Laboratorio</option>
+                    <option value="Prácticas">Prácticas</option>
+                    <option value="Otros">Otros</option>
+                </select>
+                <select id="task-status-input">
+                    <option value="pending">Estado: Pendiente</option>
+                    <option value="in-progress">Estado: En progreso</option>
+                    <option value="completed">Estado: Completada</option>
+                </select>
+                <div class="modal-actions">
+                    <button type="submit" class="save-btn">Guardar</button>
+                    <button type="button" class="cancel-btn" id="cancel-task-btn">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para agregar/editar nota -->
+    <div id="note-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-note-title">Nueva Nota</h3>
+                <button class="close-modal" id="close-note-modal">×</button>
+            </div>
+            <form id="note-form">
+                <input type="text" id="note-title-input" placeholder="Título de la nota" required>
+                <textarea id="note-content-input" placeholder="Contenido de la nota..." required></textarea>
+                <input type="text" id="note-tags-input" placeholder="Etiquetas (separadas por comas)">
+                <select id="note-category-input">
+                    <option value="General">Categoría: General</option>
+                    <option value="Química Orgánica">Categoría: Química Orgánica</option>
+                    <option value="Farmacología">Categoría: Farmacología</option>
+                    <option value="Análisis Farmacéutico">Categoría: Análisis Farmacéutico</option>
+                    <option value="Bioquímica">Categoría: Bioquímica</option>
+                    <option value="Laboratorio">Categoría: Laboratorio</option>
+                    <option value="Prácticas">Categoría: Prácticas</option>
+                    <option value="Personal">Categoría: Personal</option>
+                    <option value="Otros">Categoría: Otros</option>
+                </select>
+                <div class="modal-actions">
+                    <button type="submit" class="save-btn">Guardar</button>
+                    <button type="button" class="cancel-btn" id="cancel-note-btn">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modo Focus -->
+    <div id="focus-mode" class="focus-mode hidden">
+        <div class="focus-header">
+            <button class="exit-focus-btn" id="exit-focus-btn">✕</button>
+            <h2>Modo Concentración</h2>
+        </div>
+        <div class="focus-timer">
+            <div class="timer-display" id="timer-display">25:00</div>
+            <div class="timer-controls">
+                <button class="timer-btn" id="start-timer">▶ Iniciar</button>
+                <button class="timer-btn" id="pause-timer">⏸ Pausar</button>
+                <button class="timer-btn" id="reset-timer">↻ Reiniciar</button>
+            </div>
+            <select id="focus-duration" class="focus-duration-select">
+                <option value="25">25 minutos</option>
+                <option value="45">45 minutos</option>
+                <option value="60">60 minutos</option>
+            </select>
+        </div>
+        <div class="focus-task" id="focus-task-display">
+            <h3>Tarea Actual</h3>
+            <p id="focus-task-name">Selecciona una tarea para enfocarte</p>
+        </div>
+        <div class="focus-tasks-list" id="focus-tasks-list">
+            <!-- Lista de tareas para seleccionar -->
+        </div>
+    </div>
+
+    <!-- Toggle Modo Noche -->
+    <button class="night-mode-toggle" id="night-mode-toggle" title="Modo noche">🌙</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

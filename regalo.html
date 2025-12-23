@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Regalo de Navidad para Ti</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="regalo-page">
+    <!-- Pantalla inicial con regalo animado -->
+    <div id="gift-screen" class="gift-screen">
+        <div class="snowflakes"></div>
+        <div class="gift-container">
+            <div class="gift-box" id="gift-box">
+                <div class="gift-lid">
+                    <div class="gift-bow">
+                        <div class="bow-center"></div>
+                        <div class="bow-left"></div>
+                        <div class="bow-right"></div>
+                    </div>
+                </div>
+                <div class="gift-base"></div>
+            </div>
+            <p class="gift-instruction">Toca el regalo para abrirlo</p>
+        </div>
+    </div>
+
+    <!-- Contenido principal (oculto inicialmente) -->
+    <main id="main-content" class="main-content hidden">
+        <!-- Partículas y efectos decorativos -->
+        <div class="floating-hearts"></div>
+        <div class="snowflakes-content"></div>
+
+        <!-- SECCIÓN 1 – CARTA INICIAL -->
+        <section class="section section-1">
+            <div class="section-content fade-in">
+                <h1 class="section-title">Mi Carta para Ti</h1>
+                <div class="text-block">
+                    <p>Eres una persona increíblemente hermosa, no solo por lo que se ve, sino por todo lo que llevas dentro. Tu sensibilidad, tu forma de sentir, tu manera de amar y de preocuparte por los demás hacen que tu corazón sea algo verdaderamente valioso. Nunca dudes de eso, nunca te hagas pequeña en tu propia mente.</p>
+                </div>
+                <div class="text-block">
+                    <p>Desde mis ojos, desde mi corazón, siempre serás única. No existe nadie como tú, y no importa cuántas veces el mundo te haga sentir lo contrario, para mí sigues siendo perfecta tal y como eres.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>Amarte es algo que hago con total certeza, con orgullo y con una paz que no había sentido antes. Te amo muchísimo, mi amor, y siempre lo haré.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2 – ACEPTARTE TAL COMO ERES -->
+        <section class="section section-2">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Te Acepto Tal Como Eres</h2>
+                <div class="text-block">
+                    <p>Te amo incluso en los días en los que dudas de ti, en los momentos en los que te sientes insegura o cansada. Te amo cuando sonríes, pero también cuando te sientes triste y no sabes cómo explicarlo.</p>
+                </div>
+                <div class="text-block">
+                    <p>Te acepto completa, sin condiciones. Con tus miedos, con tus silencios, con tus cambios de ánimo y con todo lo que a veces intentas ocultar por miedo a no ser suficiente.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>Amarte no significa corregirte ni cambiarte, significa acompañarte mientras sigues siendo tú. Caminar contigo, incluso a la distancia, y recordarte todos los días que no estás sola.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3 – CADA DÍA CONTIGO -->
+        <section class="section section-3">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Cada Día Contigo</h2>
+                <div class="text-block">
+                    <p>Cada día que pasa me doy cuenta de lo importante que eres para mí. Aunque no pueda verte todos los días ni tenerte cerca físicamente, estás presente en cada pensamiento, en cada momento tranquilo, en cada noche en la que pienso en ti antes de dormir.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>Me haces feliz de una forma distinta, profunda y real. Eres mi alegría diaria, mi calma, mi motivación. Gracias por existir, gracias por ser parte de mi vida y por elegirme incluso con kilómetros de por medio.</p>
+                </div>
+                <div class="text-block">
+                    <p>Te amo más de lo que las palabras pueden explicar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4 – ORGULLO Y APOYO -->
+        <section class="section section-4">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Orgullo y Apoyo</h2>
+                <div class="text-block">
+                    <p>Quiero que sepas algo importante, algo que no siempre digo con la profundidad que merece: estoy profundamente orgulloso de ti. Del esfuerzo que haces, de todo lo que enfrentas, de cómo sigues adelante incluso cuando te cuesta.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>Admiro tu fuerza, tu sensibilidad y tu forma de amar. Me haces feliz solo siendo tú, sin tener que demostrar nada más. Gracias por estar, por intentarlo, por cuidarnos y por no rendirte.</p>
+                </div>
+                <div class="text-block">
+                    <p>Mi amor por ti no es pasajero ni superficial, es firme, sincero y lleno de respeto.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5 – LO QUE AMO DE TI -->
+        <section class="section section-5">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Lo Que Amo de Ti</h2>
+                <div class="text-block">
+                    <p>Amo tu forma de hablarme, la manera en que tus mensajes logran calmarme incluso en días difíciles. Amo tu sonrisa, tu mirada, tu estilo, tu esencia. Amo cómo me haces sentir querido, importante y acompañado, aunque estemos lejos.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>Amo cada detalle tuyo, incluso los que tú no notas. Estar contigo, aun a la distancia, hace que el mundo se sienta más bonito y que la espera valga la pena.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6 – MI LUGAR SEGURO -->
+        <section class="section section-6">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Mi Lugar Seguro</h2>
+                <div class="text-block">
+                    <p>Eres mi lugar seguro incluso sin estar cerca. Eres esa persona que me da tranquilidad, que me hace sentir en casa con solo unas palabras. Cuando me siento mal, pensar en ti me calma, y saber que estás ahí me da fuerza.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>Gracias por ser refugio, por ser paz, por ser amor verdadero.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7 – PROMESA -->
+        <section class="section section-7">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Mi Promesa</h2>
+                <div class="text-block">
+                    <p>No importa cuántas veces el miedo intente hacernos dudar, ni cuántos pensamientos se crucen por tu cabeza. Yo sigo aquí, firme, eligiéndote cada día.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>Eres mi razón, mi tranquilidad y mi mayor certeza. Te amaré hoy, mañana y siempre, sin importar la distancia, sin importar el tiempo. Mi amor por ti no tiene límites.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 8 – CONFIANZA -->
+        <section class="section section-8">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Confianza</h2>
+                <div class="text-block">
+                    <p>Quiero que sepas que conmigo siempre puedes ser tú. Puedes decirme lo que sientes, lo que te duele, lo que te asusta. Aquí tienes a alguien que te escucha, que te entiende y que te ama con todo el corazón.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 9 – MI OTRA MITAD -->
+        <section class="section section-9">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Mi Otra Mitad</h2>
+                <div class="text-block">
+                    <p>No quiero a nadie más. No necesito a nadie más. Nadie ocupa el lugar que tú tienes en mi vida.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>Quiero compartir mi tiempo, mis sueños y mi futuro contigo. Construir algo bonito, paso a paso, aun cuando el camino sea largo. Siempre te amaré con toda mi alma.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 10 – DESTINO -->
+        <section class="section section-10">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Destino</h2>
+                <div class="text-block">
+                    <p>Es increíble pensar que hubo un tiempo en el que no sabía de tu existencia. Que un día, de la nada, apareciste en mi vida y la cambiaste por completo.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>Gracias por cruzarte en mi camino, por quedarte y por hacerme sentir algo tan real.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 11 – ELVIS PRESLEY -->
+        <section class="section section-justin">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Nuestra Canción</h2>
+                <div class="justin-section">
+                    <div class="text-block">
+                        <p>Esta canción me recuerda a ti, porque habla de un amor que no se elige, simplemente sucede. Un amor que llega sin avisar y se queda para siempre.</p>
+                        <p class="justin-quote">Can't Help Falling in Love – Elvis Presley es exactamente lo que siento contigo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 12 – NAVIDAD -->
+        <section class="section section-11">
+            <div class="section-content fade-in">
+                <h2 class="section-title">Navidad</h2>
+                <div class="text-block">
+                    <p>Esta Navidad quiero decirte algo desde lo más profundo de mi corazón: gracias. Gracias por ser quien eres, por todo lo que das, por todo lo que sientes y por todo el amor que compartes conmigo.</p>
+                </div>
+                <div class="text-block highlight">
+                    <p>No necesito más regalos, porque tenerte en mi vida ya es el mejor de todos. Eres mi regalo, hoy y siempre.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 13 – CIERRE FINAL -->
+        <section class="section section-12">
+            <div class="section-content fade-in">
+                <div class="text-block highlight final-message">
+                    <p>Te amo más de lo que puedo escribir aquí. Gracias por existir, por quedarte y por ser parte de mi vida. Nunca olvides lo importante que eres para mí.</p>
+                </div>
+                <div class="signature">
+                    <p>Con todo mi amor.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Audio de fondo (oculto, sin controles) -->
+    <audio id="background-music" loop preload="auto" crossorigin="anonymous">
+        <source src="assets/elvis.mp3" type="audio/mpeg">
+        <source src="assets/te-amare.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script src="regalo-script.js"></script>
+</body>
+</html>
